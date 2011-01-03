@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Utilizare Zeus</title>
+</head>
+<body>
+<div style="float:right;clear:left"><a href="use_en.html"><img src="en.gif"/></a>&nbsp;<a href="use_fr.html"><img src="fr.gif"/></a></div><br/>
+    <h2>
+        Utilizare Zeus</h2>
+<p>
+<div style="float:right"><img src="context.jpg"/></div>Criptarea si decriptarea se realizeaza printr-un meniu contextual (click dreapta pe un fisier), 
+prin intermediul a doua comenzi: “Protect” si “Unprotect”. Comanda “Protect” apare in meniu numai la fisierele care nu sunt deja criptate si comprimate, 
+iar comanda “Unprotect” apare numai la fisierele care sunt criptate si comprimate.
+</p><br/>
+<p>
+<h3>Fereastra principala</h3>
+<div style="float:right"><img src="dialog.jpg"/></div>
+Fereastra principala este impartita in 4 mari grupe functionale:
+<ol>
+	<li><b>Compresie</b></li>
+	Este asigurata de ZIP cu 6 niveluri de compresie:
+		<ul>
+			<li>Store</li>
+			<li>Fastest</li>
+			<li>Fast</li>
+			<li>Normal</li>
+			<li>Maximum</li>
+			<li>Ultra</li>
+		</ul>
+	<li><b>Encriptie</b></li>
+	Este asigurata de AES in 3 moduri:
+		<ul>
+			<li>AES 128 bits</li>
+			<li>AES 256 bits</li>
+			<li>Aleator 128/256 pentru fiecare fisier</li>
+		</ul>
+	<li><b>Optiuni</b></li>
+		
+		<ul>
+		<li>Create Backup</li>
+		<i>Creeaza fisiere de recuperare.</i>
+		<li>Append Existing</li>
+		<i>Adauga la fisierele existente/sau la arhiva la protejare daca acestea/aceasta deja exista.</i>
+		<li>Overwrite Existing</li>
+		<i>Sterge fisierele existente pentru a putea creea pe cele noi.</i>
+		<li>Remove original</li>
+		<i>Sterge fisierele care se protejeaza sau arhiva care se deprotejeaza.</i>
+		</ul>
+	<li><b>Progres</b></li>
+	Este formata din doua bari de progres. Prima este pentru a afisa progresul pentru fisierul curent iar a doua progresul general.
+	
+</ol>
+
+</p>
+<p>
+<h3>Fisierele protejate</h3>
+Un fisier este recunoscut ca fiind protejat daca el este un fisier ZIP ce contine fisiere criptate cu AES si comprimate (prin orice metoda admisa 
+de formatul ZIP, in principiu Store sau Deflate). Fisierele recunoscute astfel sunt afisate in Explorer cu o iconita suprapusa in mod overlay peste 
+iconita standard (un lacat ce apare in coltul din dreapta jos al iconitei originale) pentru ca fisierul protejat poate avea orice extensie.
+Odata ce un fisier/director a fost criptat si comprimat cu Zeus, recunoasterea lui pentru aplicarea iconitei specifice se face doar prin 
+citirea continutului si identificarea sa ca fisier ZIP criptat cu Zeus.
+<center><img src="overlay.jpg"/></center>
+</p>
+<h3>Fereastra About</h3>
+<div style="float:right"><img src="about.jpg"/></div>
+<p>Aceasta fereastra se deschide tot din meniul contextual aplicat pe fisiere si afiseaza informatii generice despre ratia de compresie la care a fost
+protejat fisierul si informatii despre copyright. <i>Ratia de compresie este definita ca raport intre dimensiune fisierului compresat si dimensiunea lui 
+inainte de compresie. ZIP este metoda care niciodata nu are o ratie de compresie supraunitara adica niciodata nu expandeaza datele ca in cazul LZW la 
+care ratia poate depasii 200% sau chiar 300%.</i>
+</p>
+<h3>Sumar</h3>
+<p>
+Proiectul Zeus este un utilitar gratuit, scopul lui fiind sa satisfaca nevoia de securitate si compresie a datelor utilizatorului final. 
+Inovatia la Zeus consta in a proteja fisierele intr-un mod neomogen folosind o metoda de encriptie de putere aleatoare. 
+S-au folosit librariile gratuite si standardizate pentru compresie si encriptie pentru a oferi o alternativa free la WinZip. 
+Interfata este prietenoasa cu utilizatorul, programul integrandu-se in Windows Explorer.
+</p>
+</body>
+</html>

@@ -1,0 +1,265 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\Zeus.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "www.shareit.ro"
+            VALUE "CompanyName", "ShareIT. Made by Mihai Popescu"
+            VALUE "FileDescription", "Zeus - Zip Encryption Unified Shell Extension"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "Zeus.dll"
+            VALUE "LegalCopyright", "2007 (c) ShareIT.  All rights reserved."
+            VALUE "OriginalFilename", "Zeus.dll"
+            VALUE "ProductName", "Zeus"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT DIALOGEX 0, 0, 220, 103
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About..."
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_RATIO,"msctls_progress32",WS_BORDER | 0x5,7,6,17,90
+    DEFPUSHBUTTON   "OK",ID_OKABOUT,162,11,50,14
+    LTEXT           "Portions Copyright (c) 1995-2003 Mark Adler",IDC_STATIC,38,85,147,8
+    LTEXT           "ZLIB Compresion Library",IDC_STATIC,34,59,78,8
+    LTEXT           "Copyright (c) 2002, Dr Brian Gladman",IDC_STATIC,39,46,141,8
+    LTEXT           "AES Encryption Library",IDC_STATIC,34,38,73,8
+    GROUPBOX        "Copyright information",IDC_STATIC,30,6,183,90
+    LTEXT           "Portions Copyright (c) 1995-2004 Jean-loup Gailly",IDC_STATIC,38,76,160,8
+    LTEXT           "Portions Copyright (c) 1998-2005 Gilles Vollant",IDC_STATIC,38,67,146,8
+    LTEXT           "Zeus Shell Extension",IDC_STATIC,33,17,68,8
+    LTEXT           "Copyright (c) 2008, Mihai Popescu",IDC_STATIC,39,26,109,8
+END
+
+IDD_WIZZARD DIALOGEX 0, 0, 322, 247
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Zeus Protection Wizzard"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         160,IDC_STATIC,"Static",SS_BITMAP | WS_BORDER,7,7,38,233
+    GROUPBOX        "Compresion",IDC_STATIC,48,3,170,61
+    LTEXT           "Protected &file name",IDC_STATIC,53,15,63,8
+    EDITTEXT        IDC_OUTFILENAME,53,26,160,14,ES_AUTOHSCROLL
+    GROUPBOX        "Encryption",IDC_STATIC,48,65,170,90
+    LTEXT           "&Password",IDC_STATIC,53,77,32,8
+    EDITTEXT        IDC_PASSWORD1,53,89,160,14,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "&Confirm password",IDC_STATIC,53,107,66,8
+    EDITTEXT        IDC_PASSWORD2,53,117,160,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Ok",IDOK,222,141,42,14
+    PUSHBUTTON      "Cancel",IDCANCEL,272,141,42,14
+    LTEXT           "Compresion &Level",IDC_LABEL,53,47,58,8
+    COMBOBOX        IDC_COMPLEVEL,123,45,90,74,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Encryption &Strength",IDC_STATIC,53,138,65,8
+    COMBOBOX        IDC_ENCRYPTPOW,123,136,90,53,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Options",IDC_STATIC,222,66,92,71
+    CONTROL         "Create &backup",IDC_EXF_BACKUP,"Button",BS_AUTORADIOBUTTON,227,78,77,10
+    CONTROL         "&Append existing",IDC_EXF_APPEND,"Button",BS_AUTORADIOBUTTON,227,93,78,10
+    CONTROL         "&Overwrite existing",IDC_EXF_OVERWRITE,"Button",BS_AUTORADIOBUTTON,227,108,79,10
+    CONTROL         "&Remove original files",IDC_REMOR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,227,122,81,10
+    CONTROL         162,IDC_STATIC,"Static",SS_BITMAP | WS_BORDER,222,7,92,56
+    CTEXT           "Copyright (C) 2008 ShareIT.ro by Mihai Popescu mr.mihaipopescu@gmail.com",IDC_STATIC,48,231,266,9,SS_SUNKEN
+    GROUPBOX        "Progress",IDC_STATIC,48,156,266,71
+    CTEXT           "Current file",IDC_CRTFILE,53,168,253,8,SS_PATHELLIPSIS
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER | 0x1,53,179,254,14
+    CTEXT           "Overall progress",IDC_PROVALL,53,198,253,8
+    CONTROL         "",IDC_PROGRESS2,"msctls_progress32",WS_BORDER | 0x1,53,208,254,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 213
+        VERTGUIDE, 30
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 96
+    END
+
+    IDD_WIZZARD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 314
+        VERTGUIDE, 48
+        VERTGUIDE, 53
+        VERTGUIDE, 123
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 240
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_MENU_BMP            BITMAP                  "res\\ctx_lock.bmp"
+IDB_ABOUT_BMP           BITMAP                  "res\\menu_bmp.bmp"
+IDB_LABEL               BITMAP                  "res\\label_22.bmp"
+IDB_LOGO                BITMAP                  "res\\logo22.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_OVERLAY             ICON                    "res\\lockoverlay-32x32.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_WIZZARD DLGINIT
+BEGIN
+    IDC_COMPLEVEL, 0x403, 6, 0
+0x7453, 0x726f, 0x0065, 
+    IDC_COMPLEVEL, 0x403, 8, 0
+0x6146, 0x7473, 0x7365, 0x0074, 
+    IDC_COMPLEVEL, 0x403, 5, 0
+0x6146, 0x7473, "\000" 
+    IDC_COMPLEVEL, 0x403, 7, 0
+0x6f4e, 0x6d72, 0x6c61, "\000" 
+    IDC_COMPLEVEL, 0x403, 8, 0
+0x614d, 0x6978, 0x756d, 0x006d, 
+    IDC_COMPLEVEL, 0x403, 6, 0
+0x6c55, 0x7274, 0x0061, 
+    IDC_ENCRYPTPOW, 0x403, 22, 0
+0x4541, 0x2053, 0x3231, 0x6238, 0x7469, 0x6520, 0x636e, 0x7972, 0x7470, 
+0x6f69, 0x006e, 
+    IDC_ENCRYPTPOW, 0x403, 22, 0
+0x4541, 0x2053, 0x3532, 0x6236, 0x7469, 0x6520, 0x636e, 0x7972, 0x7470, 
+0x6f69, 0x006e, 
+    IDC_ENCRYPTPOW, 0x403, 21, 0
+0x6152, 0x646e, 0x6d6f, 0x6620, 0x726f, 0x6520, 0x6361, 0x2068, 0x6966, 
+0x656c, "\000" 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\Zeus.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

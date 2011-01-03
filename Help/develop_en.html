@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Zeus Help </title>
+</head>
+<body>
+<div style="float:right;clear:left"> <a href="develop_ro.html"><img src="ro.gif"/></a>&nbsp;<a href="develop_fr.html"><img src="fr.gif"/></a></div><br/>
+<h2>Implementation:</h2>
+<p>
+For the developement for the application it was used native C++ (non-managed), MFC, Multithreading, ZLib (modified for the AES256 encryption extension) and AES encryption library at which we added the suport for the new protected files.
+</p>
+The solution is composed from 5 projects:
+<ol>
+<li>AES cryptographic library</li>
+<li>ZLIB compression library</li>
+<li>Win32 DLL project which is the wrapper for protection/unprotection</li>
+<li>MFC DLL project  which is the extension for shell</li>
+<li>Setup project</li>
+</ol>
+
+<h3>General information referring to the implementation of projects:</h3>
+<ol>
+<li>At the cryptographic library we added functions to generate the information required at reading writing encrypted archive file.</li>
+
+<li>The compression library was modified inside of blocks. <b><font color=blue>#ifndef</font> NOCRYPT si <font color=blue>#ifndef</font> NOUNCRYPT</b> 
+to respond to the newer requirements of AES encryption and for the source code to be easy to understand and modify for the future implementations</li>
+
+<li>Zlib library is modified to support the encrypted files with AES to comply with the specifications of WinZip:</li>
+		<ul>
+			<li>A new file format</li>
+				<ul>
+				<li>Password salt</li>
+				<li>Password verification value</li>
+				<li>The encrypted and compressed data</li>
+				<li>The autentification code</li>
+				</ul>
+			<li>A new method of compression (decimal 99)</li>
+				<ul>
+				<li>The insertion of extra-fields in the zip header </li>
+				<li>The special treatment of the method in the zlib library </li>
+				</ul>
+			<li>A new method of encryption: the encryption of each folder with AES of random power (128 / 256 bits)</li>
+		</ul>
+<li>Wrapper for protection is an Win32 DLL which exports a class with the following important functions:</li>
+	<ul>
+	<li>CreateArchive / OpenArchive</li>
+	<li>ProtectFile / isProtected</li>
+	<li>UnprotectCurrentFile / UnprotectNextFile</li>
+	<li>GetLastError / CloseArchive</li>
+	</ul>
+The reference code is taken from MSDN (the example SHELLEX) being the starting point of the similar of shell extensions projects as TortoiseSVN si TortoiseCVS. </li>
+We have implemented the interfaces IShellExtInit, IContextMenu and IShellIconOverlayIdentifier to make the integration with Windows Explorer. DllRegisterServer and DllUnregisterServer 
+make the registration or the total cleaning of the extension with the note that the shell must be restarted (explorer.exe) to realize these operations.
+The application uses multithreading putting the file processing into a separated execution thread. The communication between the processes and dialog is made through some exported variables from DLL. 
+Thus it can be displayed the operation progress and you can stopp the execution.
+<li>For installation it is recommended the installation program "setup.exe" (Windows XP and Vista) with the mention that you must have administrator rights to do this thing.</li>
+</ol>
+<h2>References</h2>
+<ul>
+<li>Historic</li>
+	<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Data_Encryption_Standard">Data Encryption Standard</a></li>
+	<li><a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Advanced Encryption Standard</a></li>
+	</ul>
+<li>Standards</li>
+	<ul>
+	<li>NIST <a href="http://www.nist.gov/aes">AES Specification</a> Oct 2000</li>
+	<li>L. Peter Deutsch and Jean-Loup Gailly <a href="http://www.ietf.org/rfc/rfc1950.txt?number=1950">ZLIB Compressed Data Format Specification</a> May 1996</li>
+	</ul>
+<li>Source codes</li>
+	<ul>
+	<li>Jean-Loup Gailly and Mark Adler <a href="http://www.zlib.net">zlib Compression Library</a></li>
+	<li>Briran Gladman <a href="http://fp.gladman.plus.com/cryptography_technology/fileencrypt/"> A Password Based File Encryption Utility</a></li>
+	<li>TortoiseSVN <a href="http://tortoisesvn.net">Shell Extension Reference Code</a></li>
+	</ul>
+<li>Documentation</li>
+	<ul>
+	<li>WinZip <a href="http://www.winzip.com/aes_info.htm">AES Encrypted Zip File Format</a> Nov 2006</li>
+	<li>MSDN <a href="http://msdn2.microsoft.com/en-us/library/bb776797.aspx">Creating Shell Extension Handlers</a></li>
+	</ul>
+</ul>
+</body>
+</html>

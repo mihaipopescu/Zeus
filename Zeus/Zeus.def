@@ -1,0 +1,11 @@
+; Zeus.def : Declares the module parameters for the DLL.
+
+LIBRARY      "Zeus"
+DESCRIPTION  "Zeus - Zip Encription Unified Shell Extension"
+
+EXPORTS
+    ; Explicit exports can go here
+   DllRegisterServer						PRIVATE ; COM server registration
+   DllUnregisterServer						PRIVATE ; COM server registration
+   DllCanUnloadNow             				PRIVATE ; DLL unloading
+   DllGetClassObject           				PRIVATE ; Component object model

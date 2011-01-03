@@ -1,0 +1,31 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=Zeus.chm
+Contents file=zeus.hhc
+Default topic=help_en.html
+Display compile progress=Yes
+Full-text search=Yes
+
+[FILES]
+develop_en.html
+develop_ro.html
+develop_fr.html
+guide_en.html
+guide_ro.html
+guide_fr.html
+help_en.html
+help_ro.html
+help_fr.html
+install_en.html
+install_ro.html
+install_fr.html
+legal_en.html
+legal_ro.html
+legal_fr.html
+use_en.html
+use_ro.html
+use_fr.html
+
+[ALIAS]
+main_index = help_en.html

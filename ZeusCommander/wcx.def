@@ -1,0 +1,16 @@
+LIBRARY	"ZeusCommander"
+
+EXPORTS
+
+OpenArchive=_OpenArchive@4
+ReadHeader=_ReadHeader@8
+ProcessFile=_ProcessFile@16
+CloseArchive=_CloseArchive@4
+SetChangeVolProc=_SetChangeVolProc@8
+SetProcessDataProc=_SetProcessDataProc@8
+
+;DeleteFiles=_DeleteFiles@8
+GetPackerCaps=_GetPackerCaps@0
+;PackFiles=_PackFiles@20
+;ConfigurePacker=_ConfigurePacker@8
+

@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using Zeus</title>
+</head>
+<body>
+<div style="float:right;clear:left"><a href="use_ro.html"><img src="ro.gif"/></a>&nbsp;<a href="use_fr.html"><img src="fr.gif"/></a></div><br/>
+    <h2>
+        Using Zeus</h2>
+<p>
+<div style="float:right"><img src="context.jpg"/></div>The encryption and decryption is realised through a contextual menu (right click on file/folder), 
+through two commands: “Protect” and “Unprotect”. The command “Protect” appears in the menu only on the files/folders which are not already encrypted and compressed, 
+and the command “Unprotect” appears only on the archive which is encrypted and compressed.
+</p><br/>
+<p>
+<h3>The main window</h3>
+<div style="float:right"><img src="dialog.jpg"/></div>
+The main window is divided in 4 big functional groups:
+<ol>
+	<li><b>Compression</b></li>
+	Is assured by ZIP with 6 levels of compression:
+		<ul>
+			<li>Store</li>
+			<li>Fastest</li>
+			<li>Fast</li>
+			<li>Normal</li>
+			<li>Maximum</li>
+			<li>Ultra</li>
+		</ul>
+	<li><b>Encryption</b></li>
+	Is assured by AES in 3 modes:
+		<ul>
+			<li>AES 128 bits</li>
+			<li>AES 256 bits</li>
+			<li>Random 128/256 for each folder</li>
+		</ul>
+	<li><b>Options</b></li>
+		
+		<ul>
+		<li>Create Backup</li>
+		<i>Creates backup files.</i>
+		<li>Append Existing</li>
+		<i>Add to the existing files or to the archive to protect if those/this one already exists.</i>
+		<li>Overwrite Existing</li>
+		<i>It removes the existing files to create the new ones.</i>
+		<li>Remove original</li>
+		<i>It removes the files which are protected or the archive which is going to be unprotect.</i>
+		</ul>
+	<li><b>Progress</b></li>
+	It has two progress bars. The first one is to display the progress for the current file and the second one the general progress.
+	
+</ol>
+
+</p>
+<p>
+<h3>The protected files</h3>
+A file is recognized as a protected one if it's a ZIP file which contains encrypted files/folders with AES and compressed (through any method admissible
+by the ZIP format, in general Store or Deflate). The recognized files are displayed in Explorer with an overlapped icon in overlay mode over 
+the standard icon (a lock which appears in the bottom right corner of the original icon) because the protected file can have any extension.
+At one time when a file it was encrypted and compressed with Zeus, his recognition for the overlaying of the specific icon it is made  only through 
+the reading of the content and his identification as a ZIP file encrypted with Zeus.
+<center><img src="overlay.jpg"/></center>
+</p>
+<h3>The About window</h3>
+<div style="float:right"><img src="about.jpg"/></div>
+<p>This window is opened also from the contextual menu applied on files and displays generic information about the compression ratio and copyright information . <i>
+The compression ratio is defined as a division between the compressed files dimension and its size before the compression. 
+ZIP has a method that never expands the data as in case of LZW which can double or triple the file size in extreme cases.</i>
+</p>
+<h3>Summary</h3>
+<p>
+The Zeus project is a free utilitarian, his purpose being to satisfy the needs of security and data compression for the final user. 
+Innovation of Zeus consists that the files are protected in a non-homogeneous way using an encryption method of a random strenght. 
+It were used the free and standardized libraries for compression and encryption to offer a free alternative to WinZip. 
+Zeus has a user friendly interface and is integrated in Windows Explorer.
+</p>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Utilisation de Zeus</title>
+</head>
+<body>
+<div style="float:right;clear:left"><a href="use_ro.html"><img src="ro.gif"/></a>&nbsp;<a href="use_en.html"><img src="en.gif"/></a></div><br/>
+    <h2>
+        Utilisation de Zeus</h2>
+<p>
+<div style="float:right"><img src="context.jpg"/></div>Le chiffrage et le d&eacute;chiffrage est r&eacute;alis&eacute; par un menu contextuel (droit - cliquer dessus le dossier/chemise), 
+par deux commandes: "Protect" et "Unprotect". La commande "Protect" apparaît dans le menu seulement sur les dossiers/chemises qui ne sont pas d&eacute;jà chiffr&eacute;s et ne sont pas comprim&eacute;s, 
+et la commande "Unprotect" appara&icirc;t seulement sur les archives qui sont chiffr&eacute;es et comprim&eacute;es.
+
+</p><br/>
+<p>
+<h3>La fen&ecirc;tre principale</h3>
+<div style="float:right"><img src="dialog.jpg"/></div>
+La fen&ecirc;tre principale est divisée dans 4 grands groupes fonctionnels :
+
+<ol>
+	<li><b>Compression</b></li>
+	Est assur&eacute; par le Zip avec 6 niveaux de compression :
+
+		<ul>
+			<li>Store</li>
+			<li>Fastest</li>
+			<li>Fast</li>
+			<li>Normal</li>
+			<li>Maximum</li>
+			<li>Ultra</li>
+		</ul>
+	<li><b>Chiffrage</b></li>
+	Est assur&eacute; par AES en 3 modes :
+		<ul>
+			<li>AES 128 bits</li>
+			<li>AES 256 bits</li>
+			<li>128/256 al&eacute;atoire pour chaque chemise</li>
+		</ul>
+	<li><b>Options</b></li>
+		
+		<ul>
+		<li>Cr&eacute;er le support</li>
+		<i>Cr&eacute;e les dossiers de secours.</i>
+		<li>Apposer exister</li>
+		<i>Ajouter aux dossiers existants ou aux archives pour se prot&eacute;ger si ceux/celle-ci existe d&eacute;j&agrave;.</i>
+		<li>Recouvrir exister</li>
+		<i>Il enl&egrave;ve les dossiers existants pour cr&eacute;er les neufs.</i>
+		<li>Enlever l'original</li>
+		<i>Il enl&egrave;ve les dossiers qui sont prot&eacute;g&eacute;s ou les archives qui vont &ecirc;tre non prot&eacute;g&eacute;.</i>
+		</ul>
+	<li><b>Progr&eacute;s</b></li>
+	Il a deux barres de progr&egrave;s. Le premier est de montrer le progr&egrave;s pour le dossier courant et le second le progr&egrave;s g&eacute;n&eacute;ral.
+	
+</ol>
+
+</p>
+<p>
+<h3>Les fichiers prot&eacute;g&eacute;s</h3>
+	
+Un fichier est reconnu comme un protégé un si c'est un fichier ZIP qui contient des fichiers cryptés / dossiers avec AES et compressés (par quelque méthode que ce soit recevable par le format ZIP, 
+en général Store ou Deflate). Les fichiers reconnus sont affichés dans l'Explorateur se chevauchent avec une icône en mode superposition sur l'icône standard (un cadenas qui apparaît dans le coin 
+en bas à droite de l'icône d'origine) car le fichier protégé peut avoir une extension. À un moment où un fichier, il a été chiffré et compressé avec Zeus, sa reconnaissance pour la superposition 
+de l'icône spécifique, il se fait uniquement par la lecture du contenu et de son identification comme un fichier ZIP chiffré avec Zeus.
+<center><img src="overlay.jpg"/></center>
+</p>
+<h3>La fen&ecirc;tre About</h3>
+<div style="float:right"><img src="about.jpg"/></div>
+<p>Cette fenêtre est ouverte également à partir du menu contextuel appliqué sur les fichiers et affiche les informations génériques sur le taux de compression et les informations sur le copyright. 
+Le taux de compression est défini comme une division entre les fichiers compressés dimension et sa taille avant la compression. <i>ZIP a une méthode qui ne développe que les données en cas de LZW 
+qui peuvent doubler ou tripler la taille du fichier dans les cas extrêmes.</i>
+</p>
+<h3>R&eacute;sum&eacute;</h3>
+<p>
+Le projet Zeus est un utilitaire gratuit, son but étant de satisfaire les besoins de la sécurité et la compression de données pour l'utilisateur final. Zeus de l'innovation consiste en ce que 
+les fichiers sont protégés dans un non-homogène en utilisant une méthode de cryptage d'une force aléatoire. Il a été utilisé le libre et les bibliothèques standard pour la compression et le 
+cryptage d'offrir une alternative gratuite à WinZip. Zeus a une interface facile à utiliser et il est intégré dans Windows Explorer.
+</p>
+</body>
+</html>

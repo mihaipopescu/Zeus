@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+  <LI><OBJECT type="text/sitemap">
+      <param name="Name" value="Zeus Help Index">
+      <param name="Local" value="help_en.html">
+    </OBJECT>
+	<UL>
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="User's Guide">
+        <param name="Local" value="guide_en.html">
+      </OBJECT>
+      <UL>
+        <LI><OBJECT type="text/sitemap">
+            <param name="Name" value="Installing Zeus">
+              <param name="Local" value="install_en.html">
+            </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Using Zeus">
+                <param name="Local" value="use_en.html">
+            </OBJECT>
+		<LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Developing Zeus">
+                <param name="Local" value="develop_en.html">
+            </OBJECT>
+        </UL>
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="Legal Stuff">
+        <param name="Local" value="legal_en.html">
+      </OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

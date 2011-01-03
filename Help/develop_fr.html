@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>D'aide de Zeus</title>
+</head>
+<body>
+<div style="float:right;clear:left"> <a href="develop_ro.html"><img src="ro.gif"/></a>&nbsp;<a href="develop_en.html"><img src="en.gif"/></a></div><br/>
+<h2>Ex&eacute;cution :</h2>
+<p>
+Pour le d&eacute;veloppement pour l'application elle &eacute;tait C++ indig&egrave;ne utilis&eacute; (non-contr&ocirc;l&eacute;), MFC, Multithreading, ZLib (modifi&eacute; pour la prolongation de chiffrage AES) 
+et biblioth&egrave;que de chiffrage d'AES auxquels nous avons ajout&eacute; le suport pour les nouveaux dossiers prot&eacute;g&eacute;s.
+</p>
+La solution se compose de 5 projets :
+<ol>
+<li>Biblioth&egrave;que cryptographique d'AES</li>
+<li>Biblioth&egrave;que de compression Zip</li>
+<li>Projet de DLL Win32 qui est l'emballage pour la protection/unprotection</li>
+<li>Projet de DLL de cpc qui est la prolongation pour la coquille</li>
+<li>Project d'installation</li>
+</ol>
+
+<h3>Informations g&eacute;n&eacute;rales se rapportant &agrave; l'ex&eacute;cution des projets :</h3>
+<ol>
+<li>&Agrave; la biblioth&egrave;que cryptographique nous avons ajout&eacute; des fonctions pour produire de l'information pri&eacute;e au fichier d'archives chiffr&eacute; par &eacute;criture de lecture.</li>
+
+<li>La biblioth&egrave;que de compression a &eacute;t&eacute; modifi&eacute;e &agrave; l'int&eacute;rieur de des blocs <b><font color=blue>#ifndef</font> NOCRYPT si <font color=blue>#ifndef</font> NOUNCRYPT</b> 
+pour r&eacute;pondre aux conditions plus nouvelles du chiffrage d'AES et pour que le code source soit facile &agrave; comprendre et modifier pour les futures r&eeacute;alisations</li>
+
+<li>La biblioth&egrave;que de Zlib est modifi&eacute;e pour soutenir les dossiers chiffr&eacute;s avec AES pour &ecirc;tre conformes aux caract&eacute;ristiques de WinZip :</li>
+		<ul>
+			<li>Un nouveau format de fichier</li>
+				<ul>
+				<li>Sel de mot de passe</li>
+				<li>Valeur de v&eacute;rification de mot de passe</li>
+				<li>Les donn&eacute;es chiffr&eacute;es et comprim&eacute;es</li>
+				<li>Le code d'autentification</li>
+				</ul>
+			<li>Une nouvelle m&eacute;thode de compression (d&eacute;cimale 99)</li>
+				<ul>
+				<li>L'insertion des suppl&eacute;mentaire-champs dans l'en-t&ecirc;te de  zip</li>
+				<li>Le traitement sp&eacute;cial de la m&eacute;thode dans la biblioth&egrave;que de zlib </li>
+				</ul>
+			<li>Une nouvelle m&eacute;thode de chiffrage : le chiffrage de chaque chemise avec AES de la puissance al&eacute;atoire (128/256 bits)</li>
+		</ul>
+<li>L'emballage pour la protection est un DLL Win32 qui exporte une classe avec les fonctions importantes suivantes :</li>
+	<ul>
+	<li>CreateArchive / OpenArchive</li>
+	<li>ProtectFile / isProtected</li>
+	<li>UnprotectCurrentFile / UnprotectNextFile</li>
+	<li>GetLastError / CloseArchive</li>
+	</ul>
+Le code de r&eacute;f&eacute;rence est pris de MSDN (l'exemple SHELLEX) &eacute;tant le point de d&eacute;part du semblable des projets de prolongements de coquille comme TortoiseSVN et TortoiseCVS. 
+Nous avons mis en application les interfaces IShellExtInit, IContextMenu et IShellIconOverlayIdentifier pour faire l'int&eacute;gration avec Windows Explorer. DllRegisterServer et DllUnregisterServer 
+faire l'enregistrement ou tout le nettoyage de la prolongation avec la note que la coquille doit &ecirc;tre remise en marche (explorer.exe) pour r&eacute;aliser ces op&eacute;rations.
+L'application emploie multifile mettant le traitement de fichier dans un fil s&eacute;par&eacute; d'ex&eacute;cution. La communication entre les processus et le dialogue est faite par quelques variables export&eacute;es &agrave; partir du DLL. 
+Ainsi ce peut &ecirc;tre montr&eacute; le progr&egrave;s d'op&eacute;ration et vous pouvez stop l'ex&eacute;cution.
+<li>Pour l'installation on lui recommande le programme d'installation  "setup.exe" (Windows XP et Vista) avec la mention que vous devez avoir des droits d'administrateur de faire cette chose.</li>
+</ol>
+<h2>R&eacute;f&eacute;rences</h2>
+<ul>
+<li>Historique</li>
+	<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Data_Encryption_Standard">Data Encryption Standard</a></li>
+	<li><a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Advanced Encryption Standard</a></li>
+	</ul>
+<li>Standarde</li>
+	<ul>
+	<li>NIST <a href="http://www.nist.gov/aes">AES Specification</a> Oct 2000</li>
+	<li>L. Peter Deutsch and Jean-Loup Gailly <a href="http://www.ietf.org/rfc/rfc1950.txt?number=1950">ZLIB Compressed Data Format Specification</a> May 1996</li>
+	</ul>
+<li>Codes sources</li>
+	<ul>
+	<li>Jean-Loup Gailly and Mark Adler <a href="http://www.zlib.net">zlib Compression Library</a></li>
+	<li>Briran Gladman <a href="http://fp.gladman.plus.com/cryptography_technology/fileencrypt/"> A Password Based File Encryption Utility</a></li>
+	<li>TortoiseSVN <a href="http://tortoisesvn.net">Shell Extension Reference Code</a></li>
+	</ul>
+<li>Documentation </li>
+	<ul>
+	<li>WinZip <a href="http://www.winzip.com/aes_info.htm">AES Encrypted Zip File Format</a> Nov 2006</li>
+	<li>MSDN <a href="http://msdn2.microsoft.com/en-us/library/bb776797.aspx">Creating Shell Extension Handlers</a></li>
+	</ul>
+</ul>
+</body>
+</html>
