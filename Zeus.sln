@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C++ Express 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zeus", "Zeus\Zeus.vcproj", "{E0A7253B-2C4D-48C1-977B-EF780C856471}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeusExplorer", "Zeus\Zeus.vcproj", "{E0A7253B-2C4D-48C1-977B-EF780C856471}"
 	ProjectSection(ProjectDependencies) = postProject
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5} = {52E8ED88-10A2-42E0-9597-322D9056EBE5}
 	EndProjectSection
@@ -15,11 +15,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aes", "aes\aes.vcproj", "{E
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZipAES", "ZipAES\ZipAES.vcproj", "{52E8ED88-10A2-42E0-9597-322D9056EBE5}"
 	ProjectSection(ProjectDependencies) = postProject
-		{40887CF4-CC15-42DC-AA92-84AB365A10C4} = {40887CF4-CC15-42DC-AA92-84AB365A10C4}
 		{E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62} = {E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62}
+		{40887CF4-CC15-42DC-AA92-84AB365A10C4} = {40887CF4-CC15-42DC-AA92-84AB365A10C4}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeusCommander", "ZeusCommander\ZeusCommander.vcproj", "{032A0AD6-2679-4BBE-9689-5F766F6C3538}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62} = {E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62}
+		{40887CF4-CC15-42DC-AA92-84AB365A10C4} = {40887CF4-CC15-42DC-AA92-84AB365A10C4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeusCache", "ZeusCache\ZeusCache.vcproj", "{DE92C359-58B3-4019-9877-3B376B9BAD90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,7 +34,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E0A7253B-2C4D-48C1-977B-EF780C856471}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E0A7253B-2C4D-48C1-977B-EF780C856471}.Debug|Win32.Build.0 = Debug|Win32
 		{E0A7253B-2C4D-48C1-977B-EF780C856471}.Release|Win32.ActiveCfg = Release|Win32
 		{E0A7253B-2C4D-48C1-977B-EF780C856471}.Release|Win32.Build.0 = Release|Win32
 		{40887CF4-CC15-42DC-AA92-84AB365A10C4}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -40,13 +45,15 @@ Global
 		{E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62}.Release|Win32.ActiveCfg = Release|Win32
 		{E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62}.Release|Win32.Build.0 = Release|Win32
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5}.Debug|Win32.ActiveCfg = Debug|Win32
-		{52E8ED88-10A2-42E0-9597-322D9056EBE5}.Debug|Win32.Build.0 = Debug|Win32
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5}.Release|Win32.ActiveCfg = Release|Win32
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5}.Release|Win32.Build.0 = Release|Win32
 		{032A0AD6-2679-4BBE-9689-5F766F6C3538}.Debug|Win32.ActiveCfg = Debug|Win32
-		{032A0AD6-2679-4BBE-9689-5F766F6C3538}.Debug|Win32.Build.0 = Debug|Win32
 		{032A0AD6-2679-4BBE-9689-5F766F6C3538}.Release|Win32.ActiveCfg = Release|Win32
 		{032A0AD6-2679-4BBE-9689-5F766F6C3538}.Release|Win32.Build.0 = Release|Win32
+		{DE92C359-58B3-4019-9877-3B376B9BAD90}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DE92C359-58B3-4019-9877-3B376B9BAD90}.Debug|Win32.Build.0 = Debug|Win32
+		{DE92C359-58B3-4019-9877-3B376B9BAD90}.Release|Win32.ActiveCfg = Release|Win32
+		{DE92C359-58B3-4019-9877-3B376B9BAD90}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

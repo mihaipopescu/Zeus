@@ -2,11 +2,11 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="zlib"
-	ProjectGUID="{40887CF4-CC15-42DC-AA92-84AB365A10C4}"
-	RootNamespace="zlib"
+	Name="ZeusCache"
+	ProjectGUID="{DE92C359-58B3-4019-9877-3B376B9BAD90}"
+	RootNamespace="ZeusCache"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
+	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
 		<Platform
@@ -20,8 +20,8 @@
 			Name="Debug|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="1"
+			ConfigurationType="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -41,13 +41,12 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32,_CRT_SECURE_NO_DEPRECATE,ZLIB_WINAPI"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -60,10 +59,17 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				LinkIncremental="2"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -75,6 +81,9 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -82,8 +91,8 @@
 			Name="Release|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="2"
+			ConfigurationType="1"
+			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -103,11 +112,13 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_DEPRECATE,ZLIB_WINAPI"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
-				UsePrecompiledHeader="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -120,10 +131,19 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				LinkIncremental="1"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -133,6 +153,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -148,72 +171,36 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\adler32.c"
+				RelativePath=".\cErrorManager.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\compress.c"
+				RelativePath=".\cZeusCacheManager.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\crc32.c"
+				RelativePath=".\Main.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\deflate.c"
+				RelativePath=".\stdafx.cpp"
 				>
-			</File>
-			<File
-				RelativePath=".\gzio.c"
-				>
-			</File>
-			<File
-				RelativePath=".\infback.c"
-				>
-			</File>
-			<File
-				RelativePath=".\inffast.c"
-				>
-			</File>
-			<File
-				RelativePath=".\inflate.c"
-				>
-			</File>
-			<File
-				RelativePath=".\inftrees.c"
-				>
-			</File>
-			<File
-				RelativePath=".\ioapi.c"
-				>
-			</File>
-			<File
-				RelativePath=".\iowin32.c"
-				>
-			</File>
-			<File
-				RelativePath=".\mztools.c"
-				>
-			</File>
-			<File
-				RelativePath=".\trees.c"
-				>
-			</File>
-			<File
-				RelativePath=".\uncompr.c"
-				>
-			</File>
-			<File
-				RelativePath=".\unzip.c"
-				>
-			</File>
-			<File
-				RelativePath=".\zip.c"
-				>
-			</File>
-			<File
-				RelativePath=".\zutil.c"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
@@ -222,71 +209,23 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\crc32.h"
+				RelativePath=".\cErrorManager.h"
 				>
 			</File>
 			<File
-				RelativePath=".\deflate.h"
+				RelativePath=".\cSingleton.h"
 				>
 			</File>
 			<File
-				RelativePath=".\inffast.h"
+				RelativePath=".\cZeusCacheManager.h"
 				>
 			</File>
 			<File
-				RelativePath=".\inffixed.h"
+				RelativePath=".\stdafx.h"
 				>
 			</File>
 			<File
-				RelativePath=".\inflate.h"
-				>
-			</File>
-			<File
-				RelativePath=".\inftrees.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ioapi.h"
-				>
-			</File>
-			<File
-				RelativePath=".\iowin32.h"
-				>
-			</File>
-			<File
-				RelativePath=".\mztools.h"
-				>
-			</File>
-			<File
-				RelativePath=".\trees.h"
-				>
-			</File>
-			<File
-				RelativePath=".\unzip.h"
-				>
-			</File>
-			<File
-				RelativePath=".\zconf.h"
-				>
-			</File>
-			<File
-				RelativePath=".\zconf.in.h"
-				>
-			</File>
-			<File
-				RelativePath=".\zip.h"
-				>
-			</File>
-			<File
-				RelativePath=".\zipcrypt.h"
-				>
-			</File>
-			<File
-				RelativePath=".\zlib.h"
-				>
-			</File>
-			<File
-				RelativePath=".\zutil.h"
+				RelativePath=".\targetver.h"
 				>
 			</File>
 		</Filter>
