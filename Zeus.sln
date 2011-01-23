@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zeus", "Zeus\Zeus.vcproj", "{E0A7253B-2C4D-48C1-977B-EF780C856471}"
 	ProjectSection(ProjectDependencies) = postProject
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5} = {52E8ED88-10A2-42E0-9597-322D9056EBE5}
@@ -17,11 +17,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZipAES", "ZipAES\ZipAES.vcp
 	ProjectSection(ProjectDependencies) = postProject
 		{40887CF4-CC15-42DC-AA92-84AB365A10C4} = {40887CF4-CC15-42DC-AA92-84AB365A10C4}
 		{E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62} = {E64F1B97-D5A0-4AC7-95A5-67C7D7E47E62}
-	EndProjectSection
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Zeus Setup", "Zeus Setup\Zeus Setup.vdproj", "{D2BAA960-6110-46A6-92AE-2DE7CE1BC2BB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{52E8ED88-10A2-42E0-9597-322D9056EBE5} = {52E8ED88-10A2-42E0-9597-322D9056EBE5}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeusCommander", "ZeusCommander\ZeusCommander.vcproj", "{032A0AD6-2679-4BBE-9689-5F766F6C3538}"
@@ -48,8 +43,6 @@ Global
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5}.Debug|Win32.Build.0 = Debug|Win32
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5}.Release|Win32.ActiveCfg = Release|Win32
 		{52E8ED88-10A2-42E0-9597-322D9056EBE5}.Release|Win32.Build.0 = Release|Win32
-		{D2BAA960-6110-46A6-92AE-2DE7CE1BC2BB}.Debug|Win32.ActiveCfg = Debug
-		{D2BAA960-6110-46A6-92AE-2DE7CE1BC2BB}.Release|Win32.ActiveCfg = Release
 		{032A0AD6-2679-4BBE-9689-5F766F6C3538}.Debug|Win32.ActiveCfg = Debug|Win32
 		{032A0AD6-2679-4BBE-9689-5F766F6C3538}.Debug|Win32.Build.0 = Debug|Win32
 		{032A0AD6-2679-4BBE-9689-5F766F6C3538}.Release|Win32.ActiveCfg = Release|Win32
