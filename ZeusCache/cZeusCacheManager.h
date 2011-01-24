@@ -34,8 +34,8 @@ private:
 	{
 		BOOL bValid;
 		BOOL bReferenced;
+		DWORD dwReferenceCounter;
 		DWORD dwAddress;
-		
 		BYTE _Data[CACHE_PAGE_SIZE];
 	} _CacheMemory[CACHE_PAGE_COUNT];
 

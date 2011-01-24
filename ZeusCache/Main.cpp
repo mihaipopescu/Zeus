@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 
 	char szBuffer[1024] = {0};
 	DWORD nRead = 0;
-	HANDLE hFile = cZeusCacheManager::Get()->GetFile("ZeusCacheMemory.vcproj");
+	HANDLE hFile = cZeusCacheManager::Get()->GetFile("ZeusCache.vcproj");
 	
 	printf("Read from file...\n");
 	

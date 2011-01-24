@@ -129,6 +129,12 @@ BOOL cZeusCacheManager::ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfB
 		}
 	} while(nBytesToRead != 0);
 
+	// update cache reference counter
+	for(int i=0; i<CACHE_PAGE_COUNT; ++i)
+	{
+		_CacheMemory[i].dwReferenceCounter = (_CacheMemory[i].bReferenced << 31) | (_CacheMemory[i].dwReferenceCounter >> 1);
+	}
+
 	// close file if opened
 	if( node->file )
 	{
@@ -142,6 +148,9 @@ BOOL cZeusCacheManager::ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfB
 cZeusCacheManager::sCacheEntry* cZeusCacheManager::GetCacheEntry(DWORD dwBase, sFileNode* pNode)
 {
 	sCacheEntry* pFreeEntry = NULL;
+	sCacheEntry* pEntryToReplace = NULL;	
+	sCacheEntry* pEntry = NULL;
+	DWORD dwBestCounter = 0xffffffff;
 
 	// check out the cache first...
 	for(int i=0; i<CACHE_PAGE_COUNT; ++i)
@@ -153,15 +162,27 @@ cZeusCacheManager::sCacheEntry* cZeusCacheManager::GetCacheEntry(DWORD dwBase, s
 			return &_CacheMemory[i];
 		}
 
+		// try to find a free not valid cache entry
 		if( pFreeEntry == NULL && !_CacheMemory[i].bValid )
 		{
 			pFreeEntry = &_CacheMemory[i];
+			pEntry = pFreeEntry;
+		}
+
+		// find the not frequently used cache entry to replace in case of a cache miss
+		if( pFreeEntry == NULL && _CacheMemory[i].dwReferenceCounter < dwBestCounter )
+		{
+			dwBestCounter = _CacheMemory[i].dwReferenceCounter;
+			pEntryToReplace = &_CacheMemory[i];
+			pEntry = pEntryToReplace;
 		}
 	}
 
-	if( pFreeEntry == NULL )
+	printf("\nZEUS: Cache miss at 0x%08X\n", dwBase);
+
+	if( pEntry == NULL )
 	{
-		printf("ERROR: Page replacement algorithm not implemented!");
+		printf("ERROR: No available page!");
 		return NULL;
 	}
 
@@ -172,8 +193,6 @@ cZeusCacheManager::sCacheEntry* cZeusCacheManager::GetCacheEntry(DWORD dwBase, s
 		return NULL;;
 	}
 
-	printf("\nZEUS: Cache miss at 0x%08X\n", dwBase);
-
 	// position read cursor within the file
 	fseek(pNode->file, pNode->offset, SEEK_SET);
 
@@ -181,7 +200,7 @@ cZeusCacheManager::sCacheEntry* cZeusCacheManager::GetCacheEntry(DWORD dwBase, s
 	if( nBytesToRead > CACHE_PAGE_SIZE )
 		nBytesToRead = CACHE_PAGE_SIZE;
 
-	if( nBytesToRead != fread_s(pFreeEntry->_Data, CACHE_PAGE_SIZE, 1, nBytesToRead, pNode->file) )
+	if( nBytesToRead != fread_s(pEntry->_Data, CACHE_PAGE_SIZE, 1, nBytesToRead, pNode->file) )
 		return NULL;
 
 	pFreeEntry->bValid = TRUE;
