@@ -14,9 +14,13 @@ class cZeusCacheManager
 
 public:
 	BOOL MapDiskMemory(LPCSTR lpDirectory);
+	
+	HANDLE	OpenFile(LPCSTR lpFilename);
+	DWORD	GetFileSize(HANDLE hFile);
+	BOOL	ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead);
+	VOID	CloseFile(HANDLE hFile);
 
-	HANDLE GetFile(LPCSTR lpFilename);
-	BOOL ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead);
+	COLORREF GetCachePageColor(UINT _uiCachePageIndex);
 	
 private:
 	// This SLL list is static and thus it doesn't have to manages free space

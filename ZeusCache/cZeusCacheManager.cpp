@@ -81,7 +81,7 @@ BOOL cZeusCacheManager::MapDiskMemory(LPCSTR lpDirectory)
 	return TRUE;
 }
 
-HANDLE cZeusCacheManager::GetFile(LPCSTR lpFilename)
+HANDLE cZeusCacheManager::OpenFile(LPCSTR lpFilename)
 {
 	sFileNode* node = m_pRoot;
 	while( node )
@@ -95,6 +95,15 @@ HANDLE cZeusCacheManager::GetFile(LPCSTR lpFilename)
 	return NULL;
 }
 
+DWORD cZeusCacheManager::GetFileSize(HANDLE hFile)
+{
+	sFileNode* node = (sFileNode*)hFile;
+	if( node )
+		return node->size;
+	else
+		return 0;
+}
+
 BOOL cZeusCacheManager::ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead)
 {
 	if( NULL == hFile )
@@ -106,19 +115,24 @@ BOOL cZeusCacheManager::ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfB
 	DWORD base = MEM_PAGE_BASE(dwReadAddress);
 	DWORD offset = MEM_PAGE_OFFSET(dwReadAddress);
 
+	for(int i=0; i<CACHE_PAGE_COUNT; ++i)
+	{
+		_CacheMemory[i].bReferenced = FALSE;
+	}
+
 	DWORD nBytesToRead = nNumberOfBytesToRead;
 	do
 	{
 		sCacheEntry* element = GetCacheEntry(base, node);
 		if( element != NULL )
 		{
-			DWORD nSize = CACHE_PAGE_SIZE - offset;
+			DWORD nSize = CACHE_PAGE_SIZE;
 			if( nBytesToRead < nSize )
 				nSize = nBytesToRead;
-			memcpy(lpBuffer, element->_Data + offset, nSize);
-			node->offset += nSize;
+			memcpy((char*)lpBuffer + offset, element->_Data, nSize);
+			offset += nSize;
+			node->offset = offset;
 			nBytesToRead -= nSize;
-			offset = 0;
 			base += CACHE_PAGE_SIZE;
 			*lpNumberOfBytesRead += nSize;
 		}
@@ -135,14 +149,23 @@ BOOL cZeusCacheManager::ReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfB
 		_CacheMemory[i].dwReferenceCounter = (_CacheMemory[i].bReferenced << 31) | (_CacheMemory[i].dwReferenceCounter >> 1);
 	}
 
+	return nBytesToRead == 0;
+}
+
+VOID cZeusCacheManager::CloseFile(HANDLE hFile)
+{
+	if( NULL == hFile )
+		return;
+
+	sFileNode* node = (sFileNode*)hFile;
+
 	// close file if opened
 	if( node->file )
 	{
 		fclose(node->file);
 		node->file = NULL;
+		node->offset = 0;
 	}
-			
-	return nBytesToRead == 0;
 }
 
 cZeusCacheManager::sCacheEntry* cZeusCacheManager::GetCacheEntry(DWORD dwBase, sFileNode* pNode)
@@ -162,27 +185,30 @@ cZeusCacheManager::sCacheEntry* cZeusCacheManager::GetCacheEntry(DWORD dwBase, s
 			return &_CacheMemory[i];
 		}
 
-		// try to find a free not valid cache entry
-		if( pFreeEntry == NULL && !_CacheMemory[i].bValid )
+		// if we didn't found our free cache entry
+		if( pFreeEntry == NULL )
 		{
-			pFreeEntry = &_CacheMemory[i];
-			pEntry = pFreeEntry;
-		}
-
-		// find the not frequently used cache entry to replace in case of a cache miss
-		if( pFreeEntry == NULL && _CacheMemory[i].dwReferenceCounter < dwBestCounter )
-		{
-			dwBestCounter = _CacheMemory[i].dwReferenceCounter;
-			pEntryToReplace = &_CacheMemory[i];
-			pEntry = pEntryToReplace;
+			if( !_CacheMemory[i].bValid )
+			{
+				// try to find a free not valid cache entry
+				pFreeEntry = &_CacheMemory[i];
+				pEntry = pFreeEntry;
+			}
+			else if( _CacheMemory[i].dwReferenceCounter < dwBestCounter )
+			{
+				// or find the not frequently used cache entry to replace in case of a cache miss
+				dwBestCounter = _CacheMemory[i].dwReferenceCounter;
+				pEntryToReplace = &_CacheMemory[i];
+				pEntry = pEntryToReplace;
+			}
 		}
 	}
 
 	printf("\nZEUS: Cache miss at 0x%08X\n", dwBase);
 
-	if( pEntry == NULL )
+	if( pFreeEntry == NULL )
 	{
-		printf("ERROR: No available page!");
+		printf("ERROR: No available free page!");
 		return NULL;
 	}
 
@@ -208,4 +234,22 @@ cZeusCacheManager::sCacheEntry* cZeusCacheManager::GetCacheEntry(DWORD dwBase, s
 	pFreeEntry->dwAddress = dwBase;
 
 	return pFreeEntry;
+}
+
+COLORREF cZeusCacheManager::GetCachePageColor(UINT _uiCachePageIndex)
+{
+	if( _uiCachePageIndex < CACHE_PAGE_COUNT )
+	{
+		const sCacheEntry * pEntry = _CacheMemory + _uiCachePageIndex;
+		DWORD rc = pEntry->dwReferenceCounter;
+		unsigned char count = 0;
+		while(rc != 0)
+		{
+			count++;
+			rc>>=1;
+		}
+		return RGB( !pEntry->bValid * 255, pEntry->bReferenced * 255, count * 8);
+	}
+
+	return RGB(255, 0, 0);
 }

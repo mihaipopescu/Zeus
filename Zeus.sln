@@ -27,6 +27,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeusCommander", "ZeusComman
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeusCache", "ZeusCache\ZeusCache.vcproj", "{DE92C359-58B3-4019-9877-3B376B9BAD90}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeusViewer", "ZeusViewer\ZeusViewer.vcproj", "{92F3AAAB-1F49-4687-B64E-18568FC4D1F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DE92C359-58B3-4019-9877-3B376B9BAD90} = {DE92C359-58B3-4019-9877-3B376B9BAD90}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -54,6 +59,10 @@ Global
 		{DE92C359-58B3-4019-9877-3B376B9BAD90}.Debug|Win32.Build.0 = Debug|Win32
 		{DE92C359-58B3-4019-9877-3B376B9BAD90}.Release|Win32.ActiveCfg = Release|Win32
 		{DE92C359-58B3-4019-9877-3B376B9BAD90}.Release|Win32.Build.0 = Release|Win32
+		{92F3AAAB-1F49-4687-B64E-18568FC4D1F3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{92F3AAAB-1F49-4687-B64E-18568FC4D1F3}.Debug|Win32.Build.0 = Debug|Win32
+		{92F3AAAB-1F49-4687-B64E-18568FC4D1F3}.Release|Win32.ActiveCfg = Release|Win32
+		{92F3AAAB-1F49-4687-B64E-18568FC4D1F3}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
